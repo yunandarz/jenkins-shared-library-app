@@ -11,4 +11,20 @@ pipeline {
             }
         }
     }
+    
+    post {
+        always {
+           echo "Always learning" 
+        }
+        success {
+            echo "Big success start with small victories"
+        }
+        failure {
+            echo "don't give up when fail"
+        }
+        cleanup {
+            echo "always tide your bedroom when wake up"
+        }
+    }
+    
 }
