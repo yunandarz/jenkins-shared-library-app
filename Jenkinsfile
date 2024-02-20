@@ -8,11 +8,14 @@ pipeline {
         stage("Build") {
             steps {
                 echo "build process begin"
+                sh("./mvnw clean compile tes-compile")
             }
         }
         stage("Test") {
             steps {
                 echo "testing app"
+                sh("./mvnw test")
+                echo("Finish Build")
             }
         }
         stage("Deploy") {
