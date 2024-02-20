@@ -68,6 +68,19 @@ pipeline {
         // Add actual deployment steps based on your target environment
       }
     }
+
+    // release stage
+    stage("Release") {
+      steps {
+        withCredentials([usernamePassword(
+            credentialsId: "Yunandar",
+            usernameVariable: "USER",
+            passwordVariable: "PASSWORD"
+          )]){
+          sh ('echo "Relese with u $USER -p $PASSWORD"')
+      }
+    }
+    
   }
 
   post {
