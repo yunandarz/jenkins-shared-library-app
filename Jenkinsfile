@@ -23,10 +23,16 @@ pipeline {
             }
         }
         stage("Global env") {
+
+            enviroment {
+                AUTHOR= "Yunandar Putra Palilati"    
+            }
+            
             steps {
                 echo "Start Job: ${env.JOB_NAME}"
                 echo "Start Build: ${env.BUILD_NUMBER}"
                 echo "Branch Name: ${env.BRANCH_NAME}"
+                echo "This pipeline is created by ${AUTHOR}"
             }
         }
     }
