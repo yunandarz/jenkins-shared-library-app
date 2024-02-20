@@ -13,20 +13,18 @@ pipeline {
     stage("Preparation") {
       steps {
         echo "Prepare Java"
-        // You can add additional steps to prepare Java here, such as downloading packages
+        // ... additional steps to prepare Java
         sh "./mvnw -version" // Check Maven version
       }
     }
 
-    // Build stage
     stage("Build") {
       steps {
         echo "Build process begin"
-        sh "./mvnw clean verify" // Run mvnw clean verify 
+        sh "./mvnw clean verify" // Run mvnw clean verify
       }
     }
 
-    // Test stage
     stage("Test") {
       steps {
         script {
@@ -39,7 +37,6 @@ pipeline {
       }
     }
 
-    // Global environment stage
     stage("Global env") {
       steps {
         echo "Start Job: ${env.JOB_NAME}"
@@ -49,7 +46,6 @@ pipeline {
       }
     }
 
-    // Deploy stage with manual approval
     stage("Deploy") {
       input {
         message "Can we deploy?"
@@ -69,18 +65,17 @@ pipeline {
       }
     }
 
-    // release stage
     stage("Release") {
       steps {
         withCredentials([usernamePassword(
-            credentialsId: "Yunandar",
-            usernameVariable: "USER",
-            passwordVariable: "PASSWORD"
-          )]){
-          sh ('echo "Relese with u $USER -p $PASSWORD"')
+          credentialsId: "Yunandar",
+          usernameVariable: "USER",
+          passwordVariable: "PASSWORD"
+        )]) {
+          sh 'echo "Release with user $USER -p $PASSWORD"'
+        }
       }
     }
-    
   }
 
   post {
@@ -98,4 +93,3 @@ pipeline {
     }
   }
 }
-}  
