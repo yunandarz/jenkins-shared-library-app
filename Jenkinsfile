@@ -8,6 +8,12 @@ pipeline {
     environment {
     AUTHOR = "Yunandar Putra Palilati"
     }
+
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 30, unit: 'SECONDS')
+    }
+    
     stages {
         stage("Build") {
             steps {
