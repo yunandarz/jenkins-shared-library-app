@@ -1,20 +1,20 @@
 pipeline {
-    agent none
-    
-    environment {
-        AUTHOR= "Yunandar Putra Palilati"    
+    agent {
+      node {
+        label "linux && java11"
+      }
     }
 
+    environment {
+    AUTHOR = "Yunandar Putra Palilati"
+    }
     stages {
-        stage("Global env") {          
+        stage("Build") {
             steps {
-                echo "Start Job: ${env.JOB_NAME}"
-                echo "Start Build: ${env.BUILD_NUMBER}"
-                echo "Branch Name: ${env.BRANCH_NAME}"
-                echo "This pipeline is created by ${AUTHOR}"
+                echo "build process begin"
+                sh("./mvnw clean")
             }
         }
-    
         stage("Test") {
             steps {
                 script {
@@ -26,9 +26,16 @@ pipeline {
                 }
             }
         }
-        
+        stage("Global env") {
+            steps {
+                echo "Start Job: ${env.JOB_NAME}"
+                echo "Start Build: ${env.BUILD_NUMBER}"
+                echo "Branch Name: ${env.BRANCH_NAME}"
+                echo "This task is created by ${AUTHOR}"
+            }
+        }
     }
-        
+    
     post {
         always {
            echo "Always learning" 
