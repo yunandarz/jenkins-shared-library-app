@@ -22,9 +22,11 @@ pipeline {
                 }
             }
         }
-        stage("Deploy") {
+        stage("Global env") {
             steps {
-                echo "Deploying . . ."
+                echo "Start Job: ${env.JOB_NAME}"
+                echo "Start Build: ${env.BUILD_NUMBER}"
+                echo "Branch Name: ${env.BRANCH_NAME}"
             }
         }
     }
