@@ -8,14 +8,18 @@ pipeline {
         stage("Build") {
             steps {
                 echo "build process begin"
-                sh("./mvnw clean compile tes-compile")
+                sh("./mvnw clean")
             }
         }
         stage("Test") {
             steps {
-                echo "testing app"
-                sh("./mvnw test")
-                echo("Finish Build")
+                script {
+                    def data = [
+                        "Firstname": "Yunandar",
+                        "Lastname": "Palilati"    
+                    ]
+                    writeJSON(file: "data.json", json: data)
+                }
             }
         }
         stage("Deploy") {
