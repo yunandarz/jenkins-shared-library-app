@@ -14,7 +14,7 @@ pipeline {
                 echo "This pipeline is created by ${AUTHOR}"
             }
         }
-    }
+    
         stage("Test") {
             steps {
                 script {
@@ -26,6 +26,8 @@ pipeline {
                 }
             }
         }
+        
+    }
         
     post {
         always {
