@@ -15,6 +15,29 @@ pipeline {
     }
     
     stages {
+
+        stage("Preparation") {
+            agent {
+                node {
+                    label "linux && java11"
+                }
+            }
+            stages {
+                stage("Prepare Java") {
+                    steps {
+                        echo "Prepare Java"
+                    }
+                }
+            }
+            stages {
+                stage("Prepare Maven") {
+                    steps {
+                        echo "Prepare maven"
+                    }
+                }
+            }
+        }
+        
         stage("Build") {
             steps {
                 echo "build process begin"
