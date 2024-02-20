@@ -40,6 +40,25 @@ pipeline {
                 echo "This task is created by ${AUTHOR}"
             }
         }
+
+        stage("Deploy") {
+            input {
+                message "can we deploy?"
+                ok "Yes, of course"
+                parameters {
+                    choice(name: 'TARGET_ENV', choices: ['DEV', 'QA', 'PRODUCTION'], description: 'Deploy to?')
+                }
+            }
+            agent {
+                node {
+                    label "linux && java11"
+                }
+            }
+            steps {
+                echo "Deploy to ${TARGET_ENV}"
+            }
+        }
+        
     }
     
     post {
