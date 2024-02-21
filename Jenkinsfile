@@ -8,7 +8,7 @@ pipeline {
         stage("Maven compile") {
             steps {
                 script {
-                    maven("clean compile")  // call function parameter
+                    maven("compile")  // call function parameter
                 }
             }
         }
