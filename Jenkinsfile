@@ -5,6 +5,13 @@ import yunandar.jenkins.Output;
 pipeline {
     agent any
     stages {
+        stage("Maven compile") {
+            steps {
+                script {
+                    maven("clean compile")  // call function parameter
+                }
+            }
+        }
         stage("Global Variable") {
             steps {
                 script {
