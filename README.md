@@ -1,5 +1,3 @@
-# Belajar Spring Dasar
+# Jenkins shared library for app
 
-by Programmer Zaman Now
-
-# Trigger jenkins
+compiled from Programmer Zaman Now
