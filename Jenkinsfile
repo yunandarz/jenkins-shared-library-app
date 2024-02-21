@@ -8,7 +8,7 @@ pipeline {
         stage("Hello Groovy") {
             steps {
                 script {
-                    Output.hello("Groovy")   // function to call hello world
+                    Output.hello(this, "Groovy")   // function to call hello world
                 }
             }
         }
