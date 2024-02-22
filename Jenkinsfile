@@ -5,6 +5,16 @@ import yunandar.jenkins.Output;
 pipeline {
     agent any
     stages {
+        stage() {
+            steps {
+                script {
+                    hello.person([  // call map parameter
+                        firstName: "Yunandar",
+                        lastName: "Palilati"
+                    ])
+                }
+            }
+        }
         stage("Maven compile") {
             steps {
                 script {
