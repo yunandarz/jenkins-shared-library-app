@@ -5,7 +5,7 @@ import yunandar.jenkins.Output;
 pipeline {
     agent any
     stages {
-        stage() {
+        stage("Hello person") {
             steps {
                 script {
                     hello.person([  // call map parameter
